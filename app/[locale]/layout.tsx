@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
 import '../globals.css';
 
 import { getMessages } from 'next-intl/server';
@@ -23,7 +23,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
 
   return (
     <html lang={locale}>
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} dark`}>
         <NextIntlClientProvider messages={language}>
           {children}
         </NextIntlClientProvider>

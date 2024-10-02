@@ -1,5 +1,10 @@
 {
     "Home": {
-        "title": "Hello! 👋"
+        "title": "Hello! 👋",
+        "link": "This is the homepage"
+    },
+    "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, fr {🇫🇷 French} en {🇬🇧 English} other {Unknown}}"
     }
 }
