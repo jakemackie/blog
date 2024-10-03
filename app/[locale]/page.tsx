@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl"
-import { Link } from "@/navigation";
 import LocaleSwitcher from "@/components/localeSwitcher";
 
 export default function Home() {
