@@ -12,13 +12,16 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  children: ReactNode,
-  params: { locale: string }
+  children: ReactNode;
+  params: { locale: string };
 };
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default async function RootLayout({ children, params: { locale } }: Props) {
+export default async function RootLayout({
+  children,
+  params: { locale },
+}: Props) {
   const language = await getMessages();
 
   return (
@@ -29,5 +32,5 @@ export default async function RootLayout({ children, params: { locale } }: Props
         </NextIntlClientProvider>
       </body>
     </html>
-  )
+  );
 }
