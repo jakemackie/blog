@@ -32,16 +32,18 @@ export default function LocaleSwitcherSelect({
     }
 
     return (
-        <label className='flex flex-col'>
-            <span>{label}</span>
+        <div>
+            <label htmlFor="locale" className="block text-sm font-medium leading-6">
+                {label}
+            </label>
             <select
-                className={`inline-flex bg-black text-white rounded-lg border p-2 ${isPending ? 'opacity-30' : ''}`}
+                id="locale"
                 defaultValue={defaultValue}
-                disabled={isPending}
+                className={`mt-2 block w-full rounded-md bg-background border-0 py-1.5 pl-3 pr-10 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6`}
                 onChange={onSelectChange}
             >
                 {children}
             </select>
-        </label>
+        </div>
     )
 }
