@@ -2,17 +2,19 @@ import { locales } from "@/config";
 import { useTranslations, useLocale } from "next-intl";
 import LocaleSwitcherSelect from "./localeSwitcherSelect";
 
-export default function LocaleSwitcher() {
-    const t = useTranslations("LocaleSwitcher");
-    const locale = useLocale();
+import Image from "next/image";
 
-    return (
-        <LocaleSwitcherSelect defaultValue={locale} label={t("label")}>
-            {locales.map((cur) => (
-                <option key={cur} value={cur}>
-                    {t('locale', { locale: cur })}
-                </option>
-            ))}
-        </LocaleSwitcherSelect>
-    );
+export default function LocaleSwitcher() {
+  const t = useTranslations("LocaleSwitcher");
+  const locale = useLocale();
+
+  return (
+    <LocaleSwitcherSelect defaultValue={locale} label={t("label")}>
+      {locales.map((cur) => (
+        <option key={cur} value={cur}>
+          {t('locale', { locale: cur })}
+        </option>
+      ))}
+    </LocaleSwitcherSelect>
+  );
 }

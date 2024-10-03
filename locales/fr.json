@@ -1,10 +1,10 @@
 {
     "Home": {
-        "title": "Salut! 👋",
+        "title": "Salut!",
         "description": "La saison d’automne est toujours une période de changement. À mesure que les feuilles deviennent dorées et tombent, nous nous préparons aux jours plus froids à venir. Les gens se rassemblent dans les parcs, profitant de l’air pur et de la beauté de la nature. C'est un moment de réflexion, de boissons chaudes et de moments agréables au coin du feu."
     },
     "LocaleSwitcher": {
         "label": "Changer de langue",
-        "locale": "{locale, select, fr {🇫🇷 Français} en {🇬🇧 Anglais} ca {🇪🇸 Català} other {Inconnu}}"
+        "locale": "{locale, select, fr {Français} en {Anglais} ca {Català} other {Inconnu}}"
     }
 }
