@@ -1,8 +1,7 @@
 {
     "Home": {
         "title": "Hello! 👋",
-        "description": "The autumn season is always a time for change. As the leaves turn golden and fall, we prepare for colder days ahead. People gather in parks, enjoying the crisp air and the beauty of nature. It's a time for reflection, warm drinks, and cozy moments by the fire.",
-        "link": "This is the homepage"
+        "description": "The autumn season is always a time for change. As the leaves turn golden and fall, we prepare for colder days ahead. People gather in parks, enjoying the crisp air and the beauty of nature. It's a time for reflection, warm drinks, and cozy moments by the fire."
     },
     "LocaleSwitcher": {
         "label": "Change language",
