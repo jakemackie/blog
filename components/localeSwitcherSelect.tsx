@@ -32,7 +32,7 @@ export default function LocaleSwitcherSelect({
     }
 
     return (
-        <div>
+        <div className='max-w-32'>
             <label htmlFor="locale" className="block text-sm font-medium leading-6">
                 {label}
             </label>

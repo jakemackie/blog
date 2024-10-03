@@ -1,0 +1,11 @@
+{
+    "Home": {
+        "title": "Hola! 👋",
+        "description": "La tardor sempre és una època de canvi. A mesura que les fulles es tornen daurades i cauen, ens preparem per als dies més freds que vénen. La gent es reuneix als parcs, gaudint de l’aire fresc i de la bellesa de la natura. És un moment per reflexionar, prendre begudes calentes i gaudir de moments acollidors al costat del foc.",
+        "link": "Aquesta és la pàgina d'inici"
+    },
+    "LocaleSwitcher": {
+        "label": "Canviar d'idioma",
+        "locale": "{locale, select, fr {🇫🇷 Francès} en {🇬🇧 Anglès} ca {🇪🇸 Català} other {Desconegut}}"
+    }
+}
