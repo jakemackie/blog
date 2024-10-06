@@ -43,8 +43,8 @@ export default async function Blog() {
                 <Image
                   src='/500x350.svg'
                   alt='Placeholder image'
-                  width={400}
-                  height={200}
+                  width={500}
+                  height={350}
                 />
                 <h3 className='pt-4 text-xl font-medium'>{post.title}</h3>
               </Link>
