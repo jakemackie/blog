@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
+import { ModeToggle } from '@/components/theme-toggle';
 import './globals.css';
 
 // If loading a variable font, you don't need to specify the font weight
@@ -26,7 +27,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className={`${inter.className}`}>{children}</main>
+          <main className={`${inter.className}`}>
+            <ModeToggle />
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
