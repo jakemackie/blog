@@ -1,8 +1,10 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+// @ts-check
 
-const withNextIntl = createNextIntlPlugin();
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  /* config options here */
+};
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default withNextIntl(nextConfig);
+export default nextConfig;
