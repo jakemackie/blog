@@ -33,9 +33,9 @@ export default function Navbar() {
         <ul className='flex items-center space-x-4 font-medium'>
           {navItems.map((page) => (
             <li key={page.name}>
-              <Button variant='outline'>
-                <Link href={page.url}>{page.name}</Link>
-              </Button>
+              <Link href={page.url}>
+                <Button variant='outline'>{page.name}</Button>
+              </Link>
             </li>
           ))}
           <li>
