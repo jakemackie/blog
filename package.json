@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "sanity": "npx sanity dev"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
