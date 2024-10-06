@@ -1,3 +1,31 @@
+export interface SinglePost {
+  slug: {
+    current: string;
+    _type: string;
+  };
+  author: {
+    name: string;
+    image: string | null;
+  };
+  publishedAt: string | null;
+  title: string;
+  body: Block[];
+}
+
+export interface Block {
+  markDefs: any[];
+  children: Child[];
+  _type: string;
+  style: string;
+  _key: string;
+}
+
+export interface Child {
+  _type: string;
+  text: string;
+  marks: any[];
+}
+
 export interface Author {
   _id: string;
   _createdAt: string;
