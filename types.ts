@@ -5,11 +5,19 @@ export interface SinglePost {
   };
   author: {
     name: string;
-    image: string | null;
+    image: string | null; // image may be null
   };
   publishedAt: string | null;
   title: string;
   body: Block[];
+  mainImage?: {
+    alt?: string;
+    asset: {
+      _ref: string;
+      _type: string;
+    };
+    _type: string;
+  };
 }
 
 export interface Block {

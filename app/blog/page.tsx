@@ -2,25 +2,31 @@ import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import Link from 'next/link';
 import Image from 'next/image';
+import { SinglePost } from '@/types';
+
+// Helper function to build image URLs from Sanity assets
+const imageUrlBuilder = (ref: string) => {
+  const [_, id, dimensions, format] = ref.split('-');
+  return `https://cdn.sanity.io/images/mq1cydnb/production/${id}-${dimensions}.${format}`;
+};
 
 export default async function Blog() {
-  type Post = {
-    title: string;
-    slug: string;
-    author: {
-      name: string;
-      image: string;
-    };
-  };
-
   const posts = await client.fetch(groq`
-    *[_type == "post"]{
-      "title": title,
-      "slug": slug.current,
-      "author": author->{
-        "name": name,
-        "image": image
+    *[_type == "post"] {
+      title,
+      slug,
+      body,
+      author->{
+        name,
+        image
       },
+      mainImage{
+        alt,
+        asset{
+          _ref
+        }
+      },
+      publishedAt
     }
   `);
 
@@ -32,23 +38,37 @@ export default async function Blog() {
         <p className='pt-4'>
           The latest posts from the blog. Click on a post to read more.
         </p>
-        <section className='pt-16 grid grid-cols-1 lg:grid-cols-2 justify-center gap-24'>
-          {posts.map((post: Post) => (
-            <div key={post.slug} className='text-left'>
+        <section className='pt-16 grid grid-cols-1 lg:grid-cols-2 justify-center gap-x-12 gap-y-24'>
+          {posts.map((post: SinglePost) => (
+            <div key={post.slug.current} className='group text-left'>
               <Link
                 className='mx-auto flex flex-col'
-                key={post.slug}
-                href={`/${post.slug}`}
+                href={`/blog/${post.slug.current}`}
               >
-                <Image
-                  src='/500x350.svg'
-                  alt='Placeholder image'
-                  width={500}
-                  height={350}
-                />
-                <h3 className='pt-4 text-xl font-medium'>{post.title}</h3>
+                <div className='relative w-full h-[350px] rounded-lg overflow-hidden ring-4 ring-transparent group-hover:ring-indigo-500 transition-all duration-300 ease-out'>
+                  <div className='absolute inset-0'>
+                    {post.mainImage?.asset?._ref ? (
+                      <Image
+                        src={imageUrlBuilder(post.mainImage.asset._ref)}
+                        alt={post.mainImage.alt || 'Post image'}
+                        fill
+                        className='object-cover'
+                      />
+                    ) : (
+                      <Image
+                        src='/500x350.svg'
+                        alt='Placeholder image'
+                        fill
+                        className='object-cover'
+                      />
+                    )}
+                  </div>
+                </div>
+                <h3 className='pt-4 text-xl font-medium group-hover:text-indigo-500 transition-colors duration-300 ease-out'>
+                  {post.title}
+                </h3>
               </Link>
-              <Link href='/404' className='pt-0.5'>
+              <Link href='/404' className='absolute pt-2'>
                 By {post.author.name}
               </Link>
             </div>
