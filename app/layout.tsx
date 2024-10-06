@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
-import { ModeToggle } from '@/components/theme-toggle';
 import './globals.css';
+import Navbar from '@/components/navbar';
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({ subsets: ['latin'] });
@@ -27,8 +27,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className={`${inter.className}`}>
-            <ModeToggle />
+          <Navbar />
+          <main className={`mx-auto max-w-screen-lg ${inter.className}`}>
             {children}
           </main>
         </ThemeProvider>

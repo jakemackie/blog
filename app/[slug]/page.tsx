@@ -4,7 +4,7 @@ import { headers } from 'next/headers';
 import { SinglePost } from '@/types';
 import { notFound } from 'next/navigation';
 
-export default async function PostPage() {
+export default async function Post() {
   const headerList = headers();
   const slug = headerList.get('x-current-path')?.replace('/', '');
   const post: SinglePost | null = await client.fetch(
@@ -26,6 +26,8 @@ export default async function PostPage() {
   if (!post) {
     notFound();
   }
+
+  console.log(post);
 
   const body = post.body
     .map((block) => block.children.map((child) => child.text).join(' '))
