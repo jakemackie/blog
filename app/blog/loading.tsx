@@ -20,9 +20,10 @@ export default async function Loading() {
                 {/* Author Info */}
                 <div className='pt-4 flex items-center space-x-4'>
                   <div className='size-8 rounded-full bg-white/20'></div>
-                  <div className='w-24 h-2 rounded-md bg-white/20'></div>
+                  <div className='w-24 h-3 rounded-md bg-white/20'></div>
+                  <div className='w-24 h-3 rounded-md bg-white/20'></div>
                 </div>
-                <div className='mt-4 w-36 h-4 rounded-md bg-white/20'></div>
+                <div className='mt-6 w-36 h-4 rounded-md bg-white/20'></div>
               </li>
             </div>
           ))}

@@ -2,9 +2,8 @@
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import { SinglePost } from '@/types';
-import Image from 'next/image';
+import Image from '@/core/Image';
 import { notFound } from 'next/navigation';
-import PostByPathname from './postByPathname';
 
 // Helper function to build image URLs from Sanity assets
 const imageUrlBuilder = (ref: string) => {

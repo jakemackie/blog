@@ -1,7 +1,7 @@
 import getPosts from '@/utils/getPosts';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/core/Image';
 import { SinglePost } from '@/types';
 
 export const metadata: Metadata = {
@@ -28,60 +28,69 @@ export default async function Blog() {
           The latest posts from the blog. Click on a post to read more.
         </p>
         <section className='pt-16 grid grid-cols-1 lg:grid-cols-2 justify-center gap-x-12 gap-y-24'>
-          {posts.map((post: SinglePost) => (
-            <div key={post.slug.current} className='group text-left'>
-              <Link
-                className='mx-auto flex flex-col'
-                href={`/blog/${post.slug.current}`}
-              >
-                <div className='relative w-full h-[350px] rounded-lg overflow-hidden ring-4 ring-transparent group-hover:ring-indigo-500 transition-all duration-300 ease-out'>
-                  <div className='absolute inset-0'>
-                    {post.mainImage?.asset?._ref ? (
+          {posts.map((post: SinglePost) => {
+            const formattedDate = new Intl.DateTimeFormat('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            }).format(new Date(post.publishedAt || Date.now()));
+
+            return (
+              <div key={post.slug.current} className='group text-left'>
+                <Link
+                  className='mx-auto flex flex-col'
+                  href={`/blog/${post.slug.current}`}
+                >
+                  <div className='relative w-full h-[350px] rounded-lg overflow-hidden ring-4 ring-transparent group-hover:ring-indigo-500 transition-all duration-300 ease-out'>
+                    <div className='absolute inset-0'>
+                      {post.mainImage?.asset?._ref ? (
+                        <Image
+                          src={imageUrlBuilder(post.mainImage.asset._ref)}
+                          alt={post.mainImage.alt || 'Post image'}
+                          fill
+                          className='object-cover'
+                        />
+                      ) : (
+                        <Image
+                          src='/500x350.svg'
+                          alt='Placeholder image'
+                          fill
+                          className='object-cover'
+                        />
+                      )}
+                    </div>
+                  </div>
+                  {/* Author Info */}
+                  <div className='pt-4 flex items-center space-x-4'>
+                    {post.author.image &&
+                    post.author.image.asset &&
+                    post.author.image.asset._ref ? (
                       <Image
-                        src={imageUrlBuilder(post.mainImage.asset._ref)}
-                        alt={post.mainImage.alt || 'Post image'}
-                        fill
-                        className='object-cover'
+                        src={imageUrlBuilder(post.author.image.asset._ref)}
+                        alt='Author image'
+                        width={32}
+                        height={32}
+                        className='rounded-full'
                       />
                     ) : (
                       <Image
-                        src='/500x350.svg'
+                        src='/32x32.svg'
                         alt='Placeholder image'
-                        fill
-                        className='object-cover'
+                        width={32}
+                        height={32}
+                        className='rounded-full'
                       />
                     )}
+                    <p className='font-medium'>{post.author.name}</p>
+                    <p className='text-gray-500'>{formattedDate}</p>
                   </div>
-                </div>
-                {/* Author Info */}
-                <div className='pt-4 flex items-center space-x-4'>
-                  {post.author.image &&
-                  post.author.image.asset &&
-                  post.author.image.asset._ref ? (
-                    <Image
-                      src={imageUrlBuilder(post.author.image.asset._ref)}
-                      alt='Placeholder image'
-                      width={32}
-                      height={32}
-                      className='rounded-full'
-                    />
-                  ) : (
-                    <Image
-                      src='/32x32.svg'
-                      alt='Placeholder image'
-                      width={32}
-                      height={32}
-                      className='rounded-full'
-                    />
-                  )}
-                  <p className='font-medium'>{post.author.name}</p>
-                </div>
-                <h3 className='pt-4 text-xl font-medium group-hover:text-indigo-500 transition-colors duration-300 ease-out'>
-                  {post.title}
-                </h3>
-              </Link>
-            </div>
-          ))}
+                  <h3 className='pt-4 text-xl font-medium group-hover:text-indigo-500 transition-colors duration-300 ease-out'>
+                    {post.title}
+                  </h3>
+                </Link>
+              </div>
+            );
+          })}
         </section>
       </div>
     </div>
