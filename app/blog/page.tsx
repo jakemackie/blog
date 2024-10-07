@@ -17,6 +17,8 @@ const imageUrlBuilder = (ref: string) => {
 export default async function Blog() {
   const posts: SinglePost[] = await getPosts();
 
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   return (
     <div className='min-h-screen flex flex-col'>
       <div className='flex flex-col text-center'>

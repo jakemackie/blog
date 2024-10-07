@@ -62,6 +62,8 @@ export default async function PostPage({
     .map((block) => block.children.map((child) => child.text).join(' '))
     .join('\n');
 
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   return (
     <div className='min-h-screen flex flex-col'>
       {/* Main Image */}
