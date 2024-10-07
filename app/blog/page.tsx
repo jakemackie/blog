@@ -1,6 +1,5 @@
+import getPosts from '@/utils/getPosts';
 import type { Metadata } from 'next';
-import { client } from '@/sanity/lib/client';
-import { groq } from 'next-sanity';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SinglePost } from '@/types';
@@ -16,24 +15,7 @@ const imageUrlBuilder = (ref: string) => {
 };
 
 export default async function Blog() {
-  const posts = await client.fetch(groq`
-    *[_type == "post"] {
-      title,
-      slug,
-      body,
-      author->{
-        name,
-        image
-      },
-      mainImage{
-        alt,
-        asset{
-          _ref
-        }
-      },
-      publishedAt
-    }
-  `);
+  const posts: SinglePost[] = await getPosts();
 
   return (
     <div className='min-h-screen flex flex-col'>

@@ -1,9 +1,10 @@
+// app/posts/[slug]/page.tsx (Server Component)
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
-import { headers } from 'next/headers';
 import { SinglePost } from '@/types';
-import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import PostByPathname from './postByPathname';
 
 // Helper function to build image URLs from Sanity assets
 const imageUrlBuilder = (ref: string) => {
@@ -11,14 +12,11 @@ const imageUrlBuilder = (ref: string) => {
   return `https://cdn.sanity.io/images/mq1cydnb/production/${id}-${dimensions}.${format}`;
 };
 
-export default async function Post() {
-  const headersList = headers();
-  const fullUrl = headersList.get('referer') || '';
-  const slug = fullUrl.split('/').pop() || '';
-
-  const post: SinglePost | null = await client.fetch(
+// Fetch post data on the server side
+async function getPostData(slug: string): Promise<SinglePost | null> {
+  const post = await client.fetch(
     groq`
-      *[_type == "post" && slug.current == $slug][0]{
+      *[_type == "post" && slug.current == $slug][0] {
         title,
         slug,
         body,
@@ -37,6 +35,17 @@ export default async function Post() {
     `,
     { slug }
   );
+
+  return post || null; // Return post data or null if not found
+}
+
+// Server component for rendering the post
+export default async function PostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getPostData(params.slug);
 
   if (!post) {
     notFound();
