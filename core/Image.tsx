@@ -11,7 +11,6 @@ const CustomImage: React.FC<ImageProps> = (props) => {
       {...props}
       className={`${props.className} opacity-0 transition-opacity duration-700`}
       onLoad={(image) => {
-        console.log('Image loaded!');
         setIsLoaded(true);
         (image.currentTarget as HTMLImageElement).classList.remove('opacity-0');
         (image.currentTarget as HTMLImageElement).classList.add('opacity-100');
