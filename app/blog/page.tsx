@@ -69,12 +69,32 @@ export default async function Blog() {
                     )}
                   </div>
                 </div>
+                {/* Author Info */}
+                <div className='pt-4 flex items-center space-x-4'>
+                  {post.author.image &&
+                  post.author.image.asset &&
+                  post.author.image.asset._ref ? (
+                    <Image
+                      src={imageUrlBuilder(post.author.image.asset._ref)}
+                      alt='Placeholder image'
+                      width={32}
+                      height={32}
+                      className='rounded-full'
+                    />
+                  ) : (
+                    <Image
+                      src='/32x32.svg'
+                      alt='Placeholder image'
+                      width={32}
+                      height={32}
+                      className='rounded-full'
+                    />
+                  )}
+                  <p className='font-medium'>{post.author.name}</p>
+                </div>
                 <h3 className='pt-4 text-xl font-medium group-hover:text-indigo-500 transition-colors duration-300 ease-out'>
                   {post.title}
                 </h3>
-              </Link>
-              <Link href='/404' className='absolute pt-2'>
-                By {post.author.name}
               </Link>
             </div>
           ))}

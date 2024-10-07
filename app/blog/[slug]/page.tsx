@@ -67,7 +67,9 @@ export default async function Post() {
       <div className='pt-6 flex flex-col text-left'>
         {/* Author Info */}
         <div className='flex items-center space-x-4'>
-          {post.author.image?.asset?._ref ? (
+          {post.author.image &&
+          post.author.image.asset &&
+          post.author.image.asset._ref ? (
             <Image
               src={imageUrlBuilder(post.author.image.asset._ref)}
               alt='Placeholder image'
@@ -77,9 +79,10 @@ export default async function Post() {
             />
           ) : (
             <Image
-              src='/32.32'
+              src='/32x32.svg'
               alt='Placeholder image'
-              fill
+              width={32}
+              height={32}
               className='rounded-full'
             />
           )}
