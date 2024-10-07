@@ -40,8 +40,6 @@ export default async function Post() {
     notFound();
   }
 
-  console.log(post.author);
-
   post.publishedAt = new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
