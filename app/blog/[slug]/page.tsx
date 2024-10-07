@@ -12,8 +12,10 @@ const imageUrlBuilder = (ref: string) => {
 };
 
 export default async function Post() {
-  const headerList = headers();
-  const slug = headerList.get('x-current-path')?.replace('/blog/', '');
+  const headersList = headers();
+  const fullUrl = headersList.get('referer') || '';
+  const slug = fullUrl.split('/').pop() || '';
+
   const post: SinglePost | null = await client.fetch(
     groq`
       *[_type == "post" && slug.current == $slug][0]{
