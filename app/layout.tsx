@@ -8,8 +8,11 @@ import Navbar from '@/components/navbar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'A blog',
+  title: {
+    template: '%s | jake',
+    default: 'jake',
+  },
+  description: 'A cool site',
 };
 
 export default function RootLayout({
@@ -28,7 +31,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className={`mx-auto max-w-screen-lg ${inter.className}`}>
+          <main
+            className={`mx-auto max-w-screen-lg px-4 lg:px-0 ${inter.className}`}
+          >
             {children}
           </main>
         </ThemeProvider>

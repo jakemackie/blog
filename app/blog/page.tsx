@@ -1,8 +1,13 @@
+import type { Metadata } from 'next';
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SinglePost } from '@/types';
+
+export const metadata: Metadata = {
+  title: 'Blog',
+};
 
 // Helper function to build image URLs from Sanity assets
 const imageUrlBuilder = (ref: string) => {

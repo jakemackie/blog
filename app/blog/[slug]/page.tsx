@@ -40,6 +40,8 @@ export default async function Post() {
     notFound();
   }
 
+  console.log(post.author);
+
   post.publishedAt = new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
@@ -67,13 +69,22 @@ export default async function Post() {
       <div className='pt-6 flex flex-col text-left'>
         {/* Author Info */}
         <div className='flex items-center space-x-4'>
-          <Image
-            src='/32x32.svg'
-            alt='Placeholder image'
-            width={32}
-            height={32}
-            className='rounded-full'
-          />
+          {post.author.image?.asset?._ref ? (
+            <Image
+              src={imageUrlBuilder(post.author.image.asset._ref)}
+              alt='Placeholder image'
+              width={32}
+              height={32}
+              className='rounded-full'
+            />
+          ) : (
+            <Image
+              src='/32.32'
+              alt='Placeholder image'
+              fill
+              className='rounded-full'
+            />
+          )}
           <p className='font-medium'>{post.author.name}</p>
           <p className='text-gray-500'>{post.publishedAt}</p>
         </div>

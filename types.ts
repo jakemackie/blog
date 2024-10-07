@@ -5,7 +5,14 @@ export interface SinglePost {
   };
   author: {
     name: string;
-    image: string | null; // image may be null
+    image?: {
+      alt?: string;
+      asset: {
+        _ref: string;
+        _type: string;
+      };
+      _type: string;
+    };
   };
   publishedAt: string | null;
   title: string;

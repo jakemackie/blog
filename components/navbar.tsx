@@ -9,25 +9,21 @@ export default function Navbar() {
       url: '/blog',
     },
     {
-      name: 'About',
-      url: '/about',
-    },
-    {
-      name: 'Contact',
-      url: '/contact',
-    },
-    {
       name: 'Projects',
       url: '/projects',
+    },
+    {
+      name: 'About',
+      url: '/about',
     },
   ];
 
   return (
     <div className='border-b'>
-      <nav className='mx-auto max-w-screen-lg flex justify-between items-center py-4'>
+      <nav className='mx-auto max-w-screen-lg px-4 lg:px-0 flex justify-between items-center py-4'>
         <div>
           <Link href='/' className='text-2xl font-bold'>
-            jake.cat
+            jake
           </Link>
         </div>
         <ul className='flex items-center space-x-4 font-medium'>
