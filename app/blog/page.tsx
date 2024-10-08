@@ -34,7 +34,8 @@ export default async function Blog() {
             }).format(new Date(post.publishedAt || Date.now()));
 
             return (
-              <div key={post.slug.current} className='group text-left'>
+              <div key={post.slug.current} className='relative group text-left'>
+                <div className='z-10 pointer-events-none absolute mx-auto bottom-20 left-0 right-0 h-10 w-full bg-indigo-500 rounded-full filter blur-xl opacity-15 group-hover:opacity-25 transition-opacity duration-700'></div>
                 <Link
                   className='mx-auto flex flex-col'
                   href={`/blog/${post.slug.current}`}
