@@ -18,7 +18,7 @@ export default async function Blog() {
   const posts: SinglePost[] = await getPosts();
 
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className='flex flex-col'>
       <div className='flex flex-col text-center'>
         <p className='pt-16 font-medium'>The blog</p>
         <h2 className='pt-2 text-5xl font-semibold'>Most recent posts</h2>

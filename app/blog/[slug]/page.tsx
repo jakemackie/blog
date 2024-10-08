@@ -63,7 +63,7 @@ export default async function PostPage({
     .join('\n');
 
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className='flex flex-col'>
       {/* Main Image */}
       {post.mainImage && post.mainImage.asset && post.mainImage.asset._ref && (
         <div className='relative mt-12 w-full h-96'>
