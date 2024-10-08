@@ -1,14 +1,14 @@
 export default async function Loading() {
   const fakePosts = ['post-1', 'post-2'];
   return (
-    <div className='min-h-screen flex flex-col animate-pulse-fast'>
+    <div className='min-h-screen flex flex-col'>
       <div className='flex flex-col text-center'>
         <p className='pt-16 font-medium'>The blog</p>
         <h2 className='pt-2 text-5xl font-semibold'>Most recent posts</h2>
         <p className='pt-4'>
           The latest posts from the blog. Click on a post to read more.
         </p>
-        <section className='pt-16 grid grid-cols-1 lg:grid-cols-2 justify-center gap-x-12 gap-y-24'>
+        <section className='animate-pulse-fast pt-16 grid grid-cols-1 lg:grid-cols-2 justify-center gap-x-12 gap-y-24'>
           {fakePosts.map((post) => (
             <div key={post} className='group text-left'>
               <li className='mx-auto flex flex-col'>
