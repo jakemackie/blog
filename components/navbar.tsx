@@ -8,14 +8,14 @@ export default function Navbar() {
       name: 'Blog',
       url: '/blog',
     },
-    {
-      name: 'Projects',
-      url: '/projects',
-    },
-    {
-      name: 'About',
-      url: '/about',
-    },
+    // {
+    //   name: 'Projects',
+    //   url: '/projects',
+    // },
+    // {
+    //   name: 'About',
+    //   url: '/about',
+    // },
   ];
 
   return (
