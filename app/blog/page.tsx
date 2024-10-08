@@ -1,7 +1,7 @@
 import getPosts from '@/utils/getPosts';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from '@/core/Image';
+import Image from 'next/image';
 import { SinglePost } from '@/types';
 
 export const metadata: Metadata = {

@@ -2,7 +2,7 @@
 import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import { SinglePost } from '@/types';
-import Image from '@/core/Image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
