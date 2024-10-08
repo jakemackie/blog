@@ -71,7 +71,7 @@ export default async function PostPage({
             src={imageUrlBuilder(post.mainImage.asset._ref)}
             alt={post.mainImage.alt || 'Post image'}
             fill
-            priority
+            priority={true}
             className='object-cover rounded-lg'
           />
         </div>

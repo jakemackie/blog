@@ -47,6 +47,8 @@ export default async function Blog() {
                           src={imageUrlBuilder(post.mainImage.asset._ref)}
                           alt={post.mainImage.alt || 'Post image'}
                           fill
+                          priority={true}
+                          sizes='500px'
                           className='object-cover'
                         />
                       ) : (
@@ -54,6 +56,7 @@ export default async function Blog() {
                           src='/500x350.svg'
                           alt='Placeholder image'
                           fill
+                          sizes='500px'
                           className='object-cover'
                         />
                       )}
