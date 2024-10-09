@@ -12,6 +12,10 @@ export default async function getPosts(): Promise<SinglePost[]> {
           name,
           image
         },
+        categories[]->{
+          _ref,
+          _key,
+        },
         mainImage{
           alt,
           asset{

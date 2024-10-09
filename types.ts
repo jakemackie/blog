@@ -3,28 +3,12 @@ export interface SinglePost {
     current: string;
     _type: string;
   };
-  author: {
-    name: string;
-    image?: {
-      alt?: string;
-      asset: {
-        _ref: string;
-        _type: string;
-      };
-      _type: string;
-    };
-  };
+  categories: Category[];
+  author: AuthorReference;
   publishedAt: string | null;
   title: string;
   body: Block[];
-  mainImage?: {
-    alt?: string;
-    asset: {
-      _ref: string;
-      _type: string;
-    };
-    _type: string;
-  };
+  mainImage?: ImageReference;
 }
 
 export interface Block {
@@ -39,6 +23,26 @@ export interface Child {
   _type: string;
   text: string;
   marks: any[];
+}
+
+export interface Category {
+  _ref: string;
+  _type: string;
+  _key: string;
+}
+
+export interface AuthorReference {
+  name: string;
+  image?: ImageReference;
+}
+
+export interface ImageReference {
+  alt?: string;
+  asset: {
+    _ref: string;
+    _type: string;
+  };
+  _type: string;
 }
 
 export interface Author {

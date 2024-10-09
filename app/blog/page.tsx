@@ -33,9 +33,16 @@ export default async function Blog() {
               day: 'numeric',
             }).format(new Date(post.publishedAt || Date.now()));
 
+            // Extracting the post body content as text
+            const body = post.body
+              .map((block) =>
+                block.children.map((child) => child.text).join(' ')
+              )
+              .join('\n');
+
             return (
               <div key={post.slug.current} className='relative group text-left'>
-                <div className='z-10 pointer-events-none absolute mx-auto bottom-20 left-0 right-0 h-10 w-full bg-indigo-500 rounded-full filter blur-xl opacity-15 group-hover:opacity-25 transition-opacity duration-700'></div>
+                <div className='pointer-events-none absolute mx-auto -top-5 -left-2 right-0 w-[105%] h-96 bg-indigo-500 rounded-xl filter blur-xl opacity-15 group-hover:opacity-50 transition-opacity duration-700'></div>
                 <Link
                   className='mx-auto flex flex-col'
                   href={`/blog/${post.slug.current}`}
@@ -63,7 +70,7 @@ export default async function Blog() {
                     </div>
                   </div>
                   {/* Author Info */}
-                  <div className='pt-4 flex items-center space-x-4'>
+                  <div className='py-5 flex items-center space-x-3'>
                     {post.author.image &&
                     post.author.image.asset &&
                     post.author.image.asset._ref ? (
@@ -84,11 +91,16 @@ export default async function Blog() {
                       />
                     )}
                     <p className='font-medium'>{post.author.name}</p>
+                    <span className='text-gray-500'>/</span>
                     <p className='text-gray-500'>{formattedDate}</p>
                   </div>
-                  <h3 className='pt-4 text-xl font-medium group-hover:text-indigo-500 transition-colors duration-300 ease-out'>
+                  <h3 className='text-2xl font-medium group-hover:text-indigo-500 transition-colors duration-300 ease-out'>
                     {post.title}
                   </h3>
+                  {/* Categories */}
+                  <p className='pt-2 text-gray-500 leading-relaxed text-lg'>
+                    {body.length > 100 ? `${body.slice(0, 100)}...` : body}
+                  </p>
                 </Link>
               </div>
             );
